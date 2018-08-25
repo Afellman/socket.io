@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id='nav' >
+    <div class="hamDiv">
+      <div class="ham"></div>
+      <div class="ham"></div>
+      <div class="ham"></div>  
+  </div>
+  </div>
+
+  <div id='rooms'>
+    <button type='button' id="host">Host Game</button>
+    <button type='button' id="join">Join Game</button>
+  </div>
+  <div id='roomsInput' class='hide'>
+    <input id='playerName' placeholder="user name">
+    <input id='roomName' class='hide' placeholder="room">
+    <button type='submit'>Submit</button>
+    <h2 id='hostWarn' class='hide' >Room Name is already taken</h2>
+    <h2 id='joinWarn' class='hide'>That room does not exist</h2>
+  </div>
+  <div id='waiting' class='hide'>
+    <img src='assets/imgs/loadingGif.gif'/>
+  </div>
+  <div id='win' style='display: none;'>
+    <h1>You Win</h1>
+  </div>
+  <div id='loose' style='display: none;'>
+    <h1>You Loose</h1>
+  </div>
+
+
+
+  <!-- SIDE BAR OR ASK VARIABLES BEFORE HOST GAME ?
+    
+    <div id="side-bar">
+    <h1>Config</h1>
+    <div class="controls">
+      <label for="points-to-win">Points to win</label>
+      <div id="points-to-win">
+        <button class="points-to-win btn-control">1</button>
+        <button class="points-to-win btn-control">2</button>
+        <button class="points-to-win btn-control">3</button>
+        <button class="points-to-win btn-control">4</button>
+        <button class="points-to-win btn-control">5</button>
+        <button class="points-to-win btn-control">6</button>
+        <button class="points-to-win btn-control">7</button>
+        <button class="points-to-win btn-control">8</button>
+        <button class="points-to-win btn-control">9</button>
+        <button class="points-to-win btn-control">10</button>
+      </div>
+    </div>
+    <div class="controls">
+      <label for="size">Size</label>
+      <div id="size">
+        <button class="size btn-control">1</button>
+        <button class="size btn-control">2</button>
+        <button class="size btn-control">3</button>
+        <button class="size btn-control">4</button>
+        <button class="size btn-control">5</button>
+        <button class="size btn-control">6</button>
+        <button class="size btn-control">7</button>
+        <button class="size btn-control">8</button>
+        <button class="size btn-control">9</button>
+        <button class="size btn-control">10</button>
+      </div>
+    </div>
+    <div class="controls">
+      <label for="handicap">Handicap</label>
+      <div id="handicap">
+        <button class="handicap btn-control">1</button>
+        <button class="handicap btn-control">2</button>
+        <button class="handicap btn-control">3</button>
+        <button class="handicap btn-control">4</button>
+        <button class="handicap btn-control">5</button>
+        <button class="handicap btn-control">6</button>
+        <button class="handicap btn-control">7</button>
+        <button class="handicap btn-control">8</button>
+        <button class="handicap btn-control">9</button>
+        <button class="handicap btn-control">10</button>
+      </div>
+    </div>
+    <div class="controls">
+    </div>
+  </div> -->
+
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="socket.io/socket.io.js"></script>
+  <script src="assets/js/p5.js"></script>
+  <script src="assets/js/p5.sound.js"></script>
+  <script src="assets/js/configBar.js"></script>
+  <script src="assets/js/sketch.js"></script>
+  <script src="assets/js/events.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/socketClient.js"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
+food
+food
+food
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! horserace@1.0.0 start: `node server.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-17T13_35_41_948Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
+food
+food
+food
+food
+food
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! horserace@1.0.0 start: `node server.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-17T18_22_44_016Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! horserace@1.0.0 start: `node server.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-19T00_45_43_191Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! horserace@1.0.0 start: `node server.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-19T01_59_40_016Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> nodemon server.js
+
+[33m[nodemon] 1.18.2[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node server.js`[39m
+events.js:165
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event at:
+    at fs.read (fs.js:2116:12)
+    at FSReqWrap.wrapper [as oncomplete] (fs.js:673:17)
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! horserace@1.0.0 start: `nodemon server.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-19T12_07_00_922Z-debug.log
+[33m[nodemon] 1.18.2[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node server.js`[39m
+events.js:165
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event at:
+    at fs.read (fs.js:2116:12)
+    at FSReqWrap.wrapper [as oncomplete] (fs.js:673:17)
+
+> horserace@1.0.0 start /var/www/horseRace
+> nodemon server.js
+
+[33m[nodemon] 1.18.2[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: *.*[39m
+[32m[nodemon] starting `node server.js`[39m
+events.js:165
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event at:
+    at fs.read (fs.js:2116:12)
+    at FSReqWrap.wrapper [as oncomplete] (fs.js:673:17)
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! horserace@1.0.0 start: `nodemon server.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-19T12_31_56_916Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! horserace@1.0.0 start: `node server.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-19T20_57_58_976Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
+{ player1: true, player2: false } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+{ player1: true, player2: true } 'player1'
+{ player1: true, player2: true } 'player2'
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! horserace@1.0.0 start: `node server.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-23T01_49_25_615Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
+connected
+connected
+{ player1: true, player2: false } 'player1'
+{ player1: true, player2: true } 'player2'
+connected
+connected
+{ player1: true, player2: false } 'player1'
+{ player1: true, player2: true } 'player2'
+connected
+connected
+{ player1: true, player2: false } 'player1'
+{ player1: true, player2: true } 'player2'
+connected
+connected
+connected
+connected
+{ player1: true, player2: false } 'player1'
+{ player1: true, player2: true } 'player2'
+connected
+connected
+{ player1: true, player2: false } 'player1'
+{ player1: true, player2: true } 'player2'
+connected
+connected
+connected
+{ player1: true, player2: false } 'player1'
+{ player1: true, player2: true } 'player2'
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+{ player1: false, player2: true } 'player2'
+connected
+connected
+{ player1: true, player2: true } 'player1'
+connected
+connected
+connected
+connected
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! horserace@1.0.0 start: `node server.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-29T05_24_31_230Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
+Terminated
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! horserace@1.0.0 start: `node server.js`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the horserace@1.0.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zuix/.npm/_logs/2018-07-31T19_57_57_344Z-debug.log
+
+> horserace@1.0.0 start /var/www/horseRace
+> node server.js
+
+listening on port
