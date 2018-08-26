@@ -44,8 +44,8 @@ module.exports = function (io, game) {
       var roomCheck = utils.roomCheck(game.rooms, roomName)
       // Checking if a room with that name exists already
       if (roomCheck) {
-        console.log('roomcheck positive')
         // Joing the room
+        console.log('"' + userName + '" created "' + roomName + '"')
         socket.join(roomName)
         // adding that room name to a local storage of room names
         game.rooms.push({roomName : roomName, host : userName})
@@ -66,6 +66,7 @@ module.exports = function (io, game) {
       if(!roomCheck && joinGame) {
         // join the room
         socket.join(roomName);
+        console.log('"' + data.userName + '" join "' + roomName + '"')
         // emit to the room (player and host) that the user joined successfully
         io.to(roomName).emit('joinGame', {joined : true, room: roomName, userName: data.userName, });
       } else {
