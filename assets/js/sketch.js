@@ -20,6 +20,7 @@
 function setup () {
 
   createCanvas(wG, hG)
+  canvasListeners();
 }
 
 function draw() {
