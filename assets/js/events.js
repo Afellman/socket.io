@@ -1,4 +1,4 @@
-$(document).on('mousedown touchstart', function () {
+$('canvas').on('mousedown touchstart', function () {
   // If the mouse click was within the circle, make the circle moveable
   if (((mouseX >= game.ball.x && mouseX <= game.ball.x + game.ball.size / 2) ||
       (mouseX <= game.ball.x && mouseX >= game.ball.x - game.ball.size / 2)) &&
@@ -9,7 +9,7 @@ $(document).on('mousedown touchstart', function () {
 
 })
 
-$(document).on('mouseup touchend', function () {
+$('canvas').on('mouseup touchend', function () {
   game.ball.moveable = false;
   return false;
 })
