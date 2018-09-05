@@ -29,6 +29,7 @@ var game = {
   host : '',
   client : '',
   room: '',
+  gameRound : 1,
 
   colors : {
     'player1' : '#FFD166',
@@ -116,6 +117,31 @@ var game = {
   waiting : function() {
     $('#roomsInput').hide();
     $('#waiting').show();
-  }
+  },
+
+  score : function() {
+    // Meter grows
+    this.meter1.w += width / pointsToWin;
+    socket.emit('score', {score: 1 , room: this.room, player: this.hostJoin});
+    // ** Move Circle **
+    this.hole.move(); 
+  },
+
+  checkScore: function() {
+    if(this.gameRound == 1) {
+      if (((this.ball.x >= this.hole.x && this.ball.x <= this.hole.x + handicap) || 
+      (this.ball.x <= this.hole.x && this.ball.x >= this.hole.x - handicap)) && 
+      ((this.ball.y >= this.hole.y && this.ball.y <= this.hole.y + handicap) || 
+      (this.ball.y <= this.hole.y && this.ball.y >= this.hole.y - handicap)))
+      {
+       this.score()
+      }
+    } else if(this.gameRound = 2) {
+      // 
+    }
+  },
+
+  
 
 }
+

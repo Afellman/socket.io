@@ -56,21 +56,8 @@ function draw() {
     }
     
     // If the ball is inside the circle
-    if (((game.ball.x >= game.hole.x && game.ball.x <= game.hole.x + handicap) || 
-    (game.ball.x <= game.hole.x && game.ball.x >= game.hole.x - handicap)) && 
-    ((game.ball.y >= game.hole.y && game.ball.y <= game.hole.y + handicap) || 
-    (game.ball.y <= game.hole.y && game.ball.y >= game.hole.y - handicap)))
-    {
-      console.log('score')
-      
-      // Meter grows
-      game.meter1.w += width / pointsToWin;
-      socket.emit('score', {score: 1 , room: game.room, player: game.hostJoin});
-      
-      // ** Move Circle **
-      game.hole.move(); 
-      
-    }
+    game.checkScore()
+   
     
     // Win Game
     if (game.meter1.w >= width) {

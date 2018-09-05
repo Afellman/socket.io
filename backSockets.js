@@ -17,8 +17,9 @@ module.exports = function (io, game) {
 
     })
 
-    // ** DOESN'T WORK ?? **
+    // ** DOESN'T WORK ?? ** 
     // socket.on('disconnet', function () {
+      // // ** if host, delete room **
     //   game[socket.player] = false;
     //   console.log(socket.player, 'disconnected');
     //   socket.player = ''

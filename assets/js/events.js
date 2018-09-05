@@ -8,7 +8,16 @@ $('#rooms > button').on('click touchstart', function () {
   $('#rooms').hide()
   $('#roomsInput').show();
   $('#roomName').show()
+  $('#back').show();
 })
+
+
+$('#back').on('click', function() {
+  $('#rooms').show()
+  $('#roomsInput').hide();
+  $('#roomName').hide()
+  $('#back').hide();
+});
 
 // Submit button
 $('#roomsInput > button').on('click touchstart', function () {

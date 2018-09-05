@@ -15,13 +15,14 @@
       <div class="ham"></div>
       <div class="ham"></div>
       <div class="ham"></div>  
+    </div>
   </div>
-  </div>
-
+  <button id='back' style='display: none;'><</button>
   <div id='rooms'>
     <button type='button' id="host">Host Game</button>
     <button type='button' id="join">Join Game</button>
   </div>
+
   <div id='roomsInput' class='hide'>
     <input id='playerName' placeholder="user name">
     <input id='roomName' class='hide' placeholder="room">
@@ -29,12 +30,15 @@
     <h2 id='hostWarn' class='hide' >Room Name is already taken</h2>
     <h2 id='joinWarn' class='hide'>That room does not exist</h2>
   </div>
+
   <div id='waiting' class='hide'>
     <img src='assets/imgs/loadingGif.gif'/>
   </div>
+
   <div id='win' style='display: none;'>
     <h1>You Win</h1>
   </div>
+
   <div id='loose' style='display: none;'>
     <h1>You Loose</h1>
   </div>

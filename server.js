@@ -13,9 +13,6 @@ var game = {
 
 
 
-
-
-
 app.use(express.static(__dirname));
 
 require('./backSockets.js')(io, game)

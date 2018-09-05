@@ -33,6 +33,7 @@ socket.on('hostRoom', function(data){
   console.log('hostGame', data);
   if (data.newRoom == true) {
     console.log(data.name, "data.name")
+    $('#back').hide();
     game.room = data.room
     game.waiting();
   } else if (data.newRoom == false) {
@@ -45,6 +46,7 @@ socket.on('joinGame', function(data) {
   console.log('joinGame', data)
   if (data.joined){
     console.log(data.room, "data.name")
+    $('#back').hide();
       game.room = data.room;
       game.start();
   } else {
