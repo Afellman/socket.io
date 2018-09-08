@@ -30,13 +30,18 @@ module.exports = function (io, game) {
     })
 
 
-    socket.on('win', function (data) {
-      io.to(data.room).emit('win', data.player);
+    socket.on('winGame', function (data) {
+      io.to(data.room).emit('winGame', data.player);
       console.log(game.rooms, 'before')
       utils.deleteRoom(game.rooms, data.room);
       console.log(game.rooms, 'after')
     })
 
+
+    socket.on('winRound', function(data) {
+      console.log(data)
+      io.to(data.room).emit('winRound', data.player)
+    })
 
     socket.on('hostRoom', function (data) {
       var newRoom = false
@@ -80,5 +85,10 @@ module.exports = function (io, game) {
 
   });
 }
+
+
+
+
+
 
 

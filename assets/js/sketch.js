@@ -28,10 +28,28 @@ function draw() {
     background("#073B4C")
     
     // hole
-    noFill() 
-    strokeWeight(game.hole.stroke)
-    stroke(game.hole.color)
-    ellipse(game.hole.x, game.hole.y, game.hole.size, game.hole.size);
+    switch(game.round) {
+      case 1:
+        noFill() 
+        strokeWeight(game.obstacles[1].stroke)
+        stroke(game.obstacles[1].color)
+        ellipse(game.obstacles[1].x, game.obstacles[1].y, game.obstacles[1].size, game.obstacles[1].size);
+        break;
+      case 2:
+        console.log('line')
+        strokeWeight(game.obstacles[2].stroke)
+        line(game.obstacles[2].line1_x, game.obstacles[2].line1_y1, game.obstacles[2].line1_x, game.obstacles[2].line1_y2)
+        line(game.obstacles[2].line2_x,game.obstacles[2].line2_y1, game.obstacles[2].line2_x, game.obstacles[2].line2_y2)
+        game.obstacles[2].move()
+        break;
+      case 3 :
+        break;
+      case 4 :
+        break;
+    }
+    if(game.round == "1"){
+      
+    } 
     
     // meter1
     noStroke()
@@ -56,13 +74,20 @@ function draw() {
     }
     
     // If the ball is inside the circle
-    game.checkScore()
-   
+    game.checkScore[game.round]()
+    
     
     // Win Game
+   
     if (game.meter1.w >= width) {
-      game.win()
+      game.winRound()
     } 
+    
+    // When is the game over??
+    // game.winGame()
   }
 }
   
+
+
+

@@ -8,9 +8,9 @@ socket.on('players', function(players) {
 })
 
 
-socket.on('score',function(data){
-  if(data != game.hostJoin) {
-    game.meter2.w += width/pointsToWin;
+socket.on('score',function(user){
+  if(user != game.hostJoin) {
+    game.score(user, game.round)
   }
 })
 
@@ -21,13 +21,19 @@ socket.on('gameStart', function(){
 })
 
 
-socket.on('win', function(data){
+socket.on('winGame', function(data){
   noCanvas();
   if(data.player !== game.hostJoin) {
     $('#loose').show();
   }
 })
 
+socket.on('winRound', function(data) {
+  // resetting the meter back to 0
+  game.changeRound()
+  // show graphic that game was won?
+
+})
 
 socket.on('hostRoom', function(data){
   console.log('hostGame', data);

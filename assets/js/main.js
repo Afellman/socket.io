@@ -3,7 +3,7 @@ var socket = io();
 
 //=================== Config =====================
 
-var pointsToWin = 5;
+var pointsToWin = 2;
 var _size = 5
 var hG = $(window).height();
 var wG = $(window).width();
@@ -29,7 +29,7 @@ var game = {
   host : '',
   client : '',
   room: '',
-  gameRound : 1,
+  round : 1,
 
   colors : {
     'player1' : '#FFD166',
@@ -40,21 +40,71 @@ var game = {
     x : wG / 2,
     y :  hG - ((wG / _size) / 2 ),
     size : wG / _size,
+    radius : (wG / _size) / 2,
     color : '',
     moveable: false
   },
 
-  hole: {
-    x: wG / 2, 
-    y: 100,
-    size: wG / _size + 10,
-    radius : _size / 2,
-    color: '#FFD166',
-    stroke: 5,
-    move : function() {
-      this.x = Math.random() * (wG - this.radius) + this.radius;
-      this.y = Math.random() * (hG - this.radius) + this.radius;
-    }
+  obstacles: {
+    // hole obstacle that moves to new space after each score.
+    "1": {
+      x: wG / 2, 
+      y: 100,
+      size: wG / _size + 10,
+      radius : _size / 2,
+      color: '#FFD166',
+      stroke: 5,
+      move : function() {
+        this.x = Math.random() * (wG - this.radius) + this.radius;
+        this.y = Math.random() * (hG - this.radius) + this.radius;
+      },
+    },
+    // two lines obstacle that moves "randomly" each frame. 
+    "2" : {
+      line1_x: wG /2,
+      line1_y1 : 0,
+      line1_y2 : hG,
+      line2_x: (wG / 2) + (wG / _size) + 80,
+      line2_y1 : 0,
+      line2_y2 : hG,
+      moveCount: 0,
+      rand: 0,
+      stroke: 3,
+      move  : function () {
+        var rand;
+        // lets the lines move in the same direction 5 times so its not so jitty
+        if(this.moveCount < 10){
+          rand = this.rand
+        } else {
+          rand = Math.floor(Math.random() * 2)
+        }
+
+        if(this.line1_x <= 0) {
+          rand = 0
+          this.moveCount = 0
+        } else if (this.line2_x >= wG){
+          rand = 1
+          this.moveCount = 0
+        }
+
+        console.log(rand)
+       // move right it rand is 0 and left if rand is 1
+        if (rand == 0) {
+          this.line1_x+= 5;
+          this.line2_x+= 5;
+        } else {
+          this.line1_x-= 5;
+          this.line2_x-= 5;
+        }
+        this.rand = rand;
+        this.moveCount+=1
+        // resetting the move back to 0.
+        if(this.moveCount >10) {
+          this.moveCount = 0
+        }
+      } 
+    },
+    
   },
 
   meter1: {
@@ -80,12 +130,24 @@ var game = {
     loop();
   },
 
-  win: function(player) {
+  winGame: function(player) {
     noCanvas();
     $('#win').show();
-    socket.emit('win', {room: game.room, player: game.hostJoin}) 
+    socket.emit('winGame', {room: game.room, player: game.hostJoin}) 
   },
 
+  winRound: function() {
+    // Ten rounds to win? 
+    if(game.round == 10) {
+      game.winGame()
+    } else {
+      game.meter1.w = 0;
+      game.meter2.w = 0;
+      socket.emit('winRound', {room: game.room, player: game.hostJoin})
+
+    }
+
+  },
   // Setting the player colors
   setColor : function(player) {
     var color = this.colors[player]
@@ -119,29 +181,76 @@ var game = {
     $('#waiting').show();
   },
 
-  score : function() {
+  score : function(user, round) {
+    
+    if (round == 1){
+
+      if(user == game.hostJoin) {
+        game.meter1.w += width / pointsToWin;
+        socket.emit('score', {score: 1 , room: game.room, player: game.hostJoin});
+        game.obstacles[1].move(); 
+      } else {
+        game.meter2.w += width/pointsToWin;
+      }
+      
+    } else if (round == 2){
+      
+      if(user == game.hostJoin) {
+        console.log(width / (pointsToWin * 100), 'meter')
+        game.meter1.w += width / (pointsToWin * 100);
+        socket.emit('score', {score: 1 , room: game.room, player: game.hostJoin});
+      } else {
+        game.meter2.w += width / (pointsToWin * 100);
+      }
+    } else if (round == 3){
+
+    }
+
+    
     // Meter grows
-    this.meter1.w += width / pointsToWin;
-    socket.emit('score', {score: 1 , room: this.room, player: this.hostJoin});
     // ** Move Circle **
-    this.hole.move(); 
+    
+    
   },
 
-  checkScore: function() {
-    if(this.gameRound == 1) {
-      if (((this.ball.x >= this.hole.x && this.ball.x <= this.hole.x + handicap) || 
-      (this.ball.x <= this.hole.x && this.ball.x >= this.hole.x - handicap)) && 
-      ((this.ball.y >= this.hole.y && this.ball.y <= this.hole.y + handicap) || 
-      (this.ball.y <= this.hole.y && this.ball.y >= this.hole.y - handicap)))
-      {
-       this.score()
+  checkScore: {
+    1: function() {
+      var ballX = game.ball.x;
+      var ballY = game.ball.y;
+      var holeX = game.obstacles[1].x;
+      var holeY = game.obstacles[1].y;
+      // if the ball is in the hole.
+        if (((ballX >= holeX && ballX <= holeX + handicap) || 
+            (ballX <= holeX && game.ball.x >= holeX - handicap)) && 
+            ((ballY >= holeY && ballY <= holeY + handicap) || 
+            (ballY <= holeY && ballY >= holeY - handicap))){
+          game.score(game.hostJoin, 1)
+        }
+    },
+    2 : function() {
+      var ballX = game.ball.x;
+      var rad = game.ball.radius
+      var line1X = game.obstacles[2].line1_x;
+      var line2X = game.obstacles[2].line2_x;
+    
+      if(ballX + rad < line2X && ballX -rad > line1X){
+        game.score(game.hostJoin, 2)
+      } else {
+
       }
-    } else if(this.gameRound = 2) {
-      // 
     }
+  },
+  
+  changeRound : function() {
+    game.meter1.w = 0;
+    game.meter2.w = 0;
+    // increasing the game round
+    game.round++
   },
 
   
-
 }
+
+
+
 

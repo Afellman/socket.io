@@ -64,11 +64,8 @@ $('#roomsInput > button').on('click touchstart', function () {
 function canvasListeners() {
   $('canvas').on('mousedown touchstart', function () {
     // If the mouse click was within the circle, make the circle moveable
-    if (((mouseX >= game.ball.x && mouseX <= game.ball.x + game.ball.size / 2) ||
-        (mouseX <= game.ball.x && mouseX >= game.ball.x - game.ball.size / 2)) &&
-      ((mouseY >= game.ball.y && mouseY <= game.ball.y + game.ball.size / 2) ||
-        (mouseY <= game.ball.y && mouseY >= game.ball.y - game.ball.size / 2))) {
-      game.ball.moveable = true;
+    if(dist(mouseX, mouseY, game.ball.x, game.ball.y) <= game.ball.radius){
+      game.ball.moveable = true
     }
   
   })
