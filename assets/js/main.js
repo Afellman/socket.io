@@ -38,7 +38,7 @@ var game = {
 
   ball : {  
     x : wG / 2,
-    y :  hG - ((wG / _size) / 2 ),
+    y :  hG -  ((wG / _size) /2 ),
     size : wG / _size,
     radius : (wG / _size) / 2,
     color : '',
