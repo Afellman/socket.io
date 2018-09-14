@@ -18,10 +18,16 @@
     </div>
   </div>
   -->
+  <div id='score'>
+    <h1 id='hostScore'></h1>
+    <h1 id='clientScore'></h1>
+  </div>
+  
+  </div>
   <button id='back' style='display: none;'><</button>
   <div id='rooms'>
     <button type='button' id="host">Host Game</button>
-    <button type='button' id="join">Join Game</button>
+    <button type='button' id="client">Join Game</button>
   </div>
 
   <div id='roomsInput' class='hide'>
@@ -29,7 +35,7 @@
     <input id='roomName' class='hide' placeholder="room">
     <button type='submit'>Submit</button>
     <h2 id='hostWarn' class='hide' >Room Name is already taken</h2>
-    <h2 id='joinWarn' class='hide'>That room does not exist</h2>
+    <h2 id='clientWarn' class='hide'>That room does not exist</h2>
   </div>
 
   <div id='waiting' class='hide'>

@@ -52,12 +52,16 @@ html, body {
   border-radius: 10px;
 }
 
+#roomsInput > button {
+  background: #06D6A0;
+}
 #buttonDiv, #rooms {
   margin-top: 10%;
   text-align: center;   
 }
 
 #rooms > button {
+  background: #FFD166;
   font-size: 2rem;
   padding: 10%;
   color: black;
@@ -193,12 +197,23 @@ html, body {
 }
 
 #back {
+  background: #323031;
   margin: 20px;
-  font-size: 16px;
+  font-size: 1.5rem;
   font-weight: 800;
-  padding: 5px 10px;
-  color: black;
+  padding: 10px 20px;
+  color: white;
   border: 1px solid black;
   border-radius: 10px;
   transition: .2s;
+}
+
+#score {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+#score > * {
+  font-size: 2rem;
+  color: white;
 }

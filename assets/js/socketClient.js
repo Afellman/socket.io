@@ -9,7 +9,7 @@ socket.on('players', function(players) {
 
 
 socket.on('score',function(user){
-  if(user != game.hostJoin) {
+  if(user !== game.hostClient) {
     game.score(user, game.round)
   }
 })
@@ -23,15 +23,16 @@ socket.on('gameStart', function(){
 
 socket.on('winGame', function(data){
   noCanvas();
-  if(data.player !== game.hostJoin) {
+  if(data.player !== game.hostClient) {
     $('#loose').show();
   }
 })
 
-socket.on('winRound', function(data) {
+socket.on('winRound', function(player) {
   // resetting the meter back to 0
   game.changeRound()
-  // show graphic that game was won?
+  game.increaseScore(player)
+  // show graphic that round was won?
 
 })
 
@@ -53,10 +54,12 @@ socket.on('joinGame', function(data) {
   if (data.joined){
     console.log(data.room, "data.name")
     $('#back').hide();
-      game.room = data.room;
+    $('#hostScore').text(data.room.host + " : 0");
+    $('#clientScore').text(data.room.client + " : 0");
+      game.room = data.room.roomName;
       game.start();
   } else {
-      game.showWarn('join');
+      game.showWarn('client');
   }
  
 })

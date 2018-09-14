@@ -39,7 +39,6 @@ module.exports = function (io, game) {
 
 
     socket.on('winRound', function(data) {
-      console.log(data)
       io.to(data.room).emit('winRound', data.player)
     })
 
@@ -69,12 +68,12 @@ module.exports = function (io, game) {
       var roomCheck = utils.roomCheck(game.rooms, roomName);
       var joinGame = utils.joinGame(game.rooms, roomName, data.userName);
       // If the room exists.
-      if(!roomCheck && joinGame) {
+      if(!roomCheck && joinGame.bool) {
         // join the room
         socket.join(roomName);
         console.log('"' + data.userName + '" join "' + roomName + '"')
         // emit to the room (player and host) that the user joined successfully
-        io.to(roomName).emit('joinGame', {joined : true, room: roomName, userName: data.userName, });
+        io.to(roomName).emit('joinGame', {joined : true, room: game.rooms[joinGame.index] });
       } else {
         // If the game does not exist, emit to the user that the join was 
         // unsuccessfully

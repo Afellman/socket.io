@@ -16,9 +16,9 @@ function joinGame(roomArray, roomName, userName) {
   if(roomIndex !== -1 && !roomArray[roomIndex].full){
     roomArray[roomIndex].client = userName;
     roomArray[roomIndex].full = true;
-    return true
+    return {bool: true, index: roomIndex}
   } else {
-    return false;
+    return { bool: false };
   }
 }
 

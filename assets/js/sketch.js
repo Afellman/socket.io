@@ -36,7 +36,6 @@ function draw() {
         ellipse(game.obstacles[1].x, game.obstacles[1].y, game.obstacles[1].size, game.obstacles[1].size);
         break;
       case 2:
-        console.log('line')
         strokeWeight(game.obstacles[2].stroke)
         line(game.obstacles[2].line1_x, game.obstacles[2].line1_y1, game.obstacles[2].line1_x, game.obstacles[2].line1_y2)
         line(game.obstacles[2].line2_x,game.obstacles[2].line2_y1, game.obstacles[2].line2_x, game.obstacles[2].line2_y2)

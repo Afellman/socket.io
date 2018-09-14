@@ -1,10 +1,11 @@
 
 
 
-// Host and Join btns
+// Host and client btns
 $('#rooms > button').on('click touchstart', function () {
-  // setting "host"/ "join" based on button pressed
-  game.hostJoin = $(this).attr('id');
+  // setting "host"/ "client" based on button pressed
+  var player = $(this).attr('id');
+  game.hostClient = player;
   $('#rooms').hide()
   $('#roomsInput').show();
   $('#roomName').show()
@@ -21,20 +22,19 @@ $('#back').on('click', function() {
 
 // Submit button
 $('#roomsInput > button').on('click touchstart', function () {
-  var action = `${game.hostJoin}Room`
   var value = $(`#roomName`).val();
   var userName = $('#playerName').val();
-  game.playerName = userName;
+  game[game.hostClient].name = userName;
   
-  if (game.hostJoin == 'host') {
-    // Join or host? 
+  if (game.hostClient == 'host') {
+    // client or host? 
     // setting the user name
-    socket.emit(action, {
+    socket.emit('hostRoom', {
       name: value,
       userName: userName
     })
-  } else if (game.hostJoin == 'join') {
-    socket.emit(action, {
+  } else if (game.hostClient == 'client') {
+    socket.emit('joinRoom', {
       name: value,
       userName: userName
     })

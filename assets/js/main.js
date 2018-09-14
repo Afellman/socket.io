@@ -25,11 +25,19 @@ var game = {
   winner : '',
   playerColor : '',
   active : false,
-  hostJoin : '',
-  host : '',
-  client : '',
+  hostClient : '',
+  host : {
+    name: '',
+    score : 0
+  },
+  client : {
+    name: '',
+    score: 0
+  },
   room: '',
   round : 1,
+  hostScore: 0,
+  clientScore: 0,
 
   colors : {
     'player1' : '#FFD166',
@@ -87,7 +95,6 @@ var game = {
           this.moveCount = 0
         }
 
-        console.log(rand)
        // move right it rand is 0 and left if rand is 1
         if (rand == 0) {
           this.line1_x+= 5;
@@ -133,7 +140,7 @@ var game = {
   winGame: function(player) {
     noCanvas();
     $('#win').show();
-    socket.emit('winGame', {room: game.room, player: game.hostJoin}) 
+    socket.emit('winGame', {room: game.room, player: game.hostClient}) 
   },
 
   winRound: function() {
@@ -143,7 +150,7 @@ var game = {
     } else {
       game.meter1.w = 0;
       game.meter2.w = 0;
-      socket.emit('winRound', {room: game.room, player: game.hostJoin})
+      socket.emit('winRound', {room: game.room, player: game.hostClient})
 
     }
 
@@ -169,9 +176,9 @@ var game = {
         $('#hostWarn').hide();
       },1300)
     } else {
-      $("#joinWarn").show();
+      $("#clientWarn").show();
       setTimeout(function() {
-        $('#joinWarn').hide();
+        $('#clientWarn').hide();
       },1300)
     }
   },
@@ -184,10 +191,9 @@ var game = {
   score : function(user, round) {
     
     if (round == 1){
-
-      if(user == game.hostJoin) {
+      if(user == game.hostClient) {
         game.meter1.w += width / pointsToWin;
-        socket.emit('score', {score: 1 , room: game.room, player: game.hostJoin});
+        socket.emit('score', {score: 1 , room: game.room, player: game.hostClient});
         game.obstacles[1].move(); 
       } else {
         game.meter2.w += width/pointsToWin;
@@ -195,10 +201,10 @@ var game = {
       
     } else if (round == 2){
       
-      if(user == game.hostJoin) {
+      if(user == game.hostClient) {
         console.log(width / (pointsToWin * 100), 'meter')
         game.meter1.w += width / (pointsToWin * 100);
-        socket.emit('score', {score: 1 , room: game.room, player: game.hostJoin});
+        socket.emit('score', {score: 1 , room: game.room, player: game.hostClient});
       } else {
         game.meter2.w += width / (pointsToWin * 100);
       }
@@ -224,7 +230,7 @@ var game = {
             (ballX <= holeX && game.ball.x >= holeX - handicap)) && 
             ((ballY >= holeY && ballY <= holeY + handicap) || 
             (ballY <= holeY && ballY >= holeY - handicap))){
-          game.score(game.hostJoin, 1)
+          game.score(game.hostClient, 1)
         }
     },
     2 : function() {
@@ -234,7 +240,7 @@ var game = {
       var line2X = game.obstacles[2].line2_x;
     
       if(ballX + rad < line2X && ballX -rad > line1X){
-        game.score(game.hostJoin, 2)
+        game.score(game.hostClient, 2)
       } else {
 
       }
@@ -248,6 +254,13 @@ var game = {
     game.round++
   },
 
+  increaseScore : function(player) {
+    var score = game[player].score
+    var scoreString = `${player} : ${score+ 1}`;
+    if(player === game.hostClient){
+      $(`#${player}Score`).text(scoreString)
+    }
+  }
   
 }
 
