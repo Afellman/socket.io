@@ -31,15 +31,15 @@ function draw() {
     switch(game.round) {
       case 1:
         noFill() 
-        strokeWeight(game.obstacles[1].stroke)
-        stroke(game.obstacles[1].color)
-        ellipse(game.obstacles[1].x, game.obstacles[1].y, game.obstacles[1].size, game.obstacles[1].size);
+        strokeWeight(obstacles[0].stroke)
+        stroke(obstacles[0].color)
+        ellipse(obstacles[0].x, obstacles[0].y, obstacles[0].size, obstacles[0].size);
         break;
       case 2:
-        strokeWeight(game.obstacles[2].stroke)
-        line(game.obstacles[2].line1_x, game.obstacles[2].line1_y1, game.obstacles[2].line1_x, game.obstacles[2].line1_y2)
-        line(game.obstacles[2].line2_x,game.obstacles[2].line2_y1, game.obstacles[2].line2_x, game.obstacles[2].line2_y2)
-        game.obstacles[2].move()
+        strokeWeight(obstacles[1].stroke)
+        line(obstacles[1].line1_x1, obstacles[1].line1_y, obstacles[1].line1_x2, obstacles[1].line1_y)
+        line(obstacles[1].line2_x1,obstacles[1].line2_y, obstacles[1].line2_x2, obstacles[1].line2_y)
+        obstacles[1].move()
         break;
       case 3 :
         break;
@@ -62,28 +62,27 @@ function draw() {
     // Ball
     stroke(255, 255, 255)
     strokeWeight(1)
-    fill(game.ball.color);
-    ellipse(game.ball.x, game.ball.y, game.ball.size, game.ball.size)
+    fill(ball.color);
+    ellipse(ball.x, ball.y, ball.size, ball.size)
     
     
     // moving the ball with the mouse
-    if (game.ball.moveable == true){
-      game.ball.x = mouseX;
-      game.ball.y = mouseY;
+    if (ball.moveable == true){
+      ball.x = mouseX;
+      ball.y = mouseY;
     }
     
     // If the ball is inside the circle
-    game.checkScore[game.round]()
-    
+    checkScore()
     
     // Win Game
    
     if (game.meter1.w >= width) {
-      game.winRound()
+      sockets.winRound();
     } 
     
     // When is the game over??
-    // game.winGame()
+    // game.gameOver()
   }
 }
   

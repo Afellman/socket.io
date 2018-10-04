@@ -17,7 +17,7 @@ html, body {
   width: 100vw !important;
   overflow: hidden; 
 }
-#win, #loose {
+#win, #lose {
   font-size: 2em;
   margin-top: 10%;
   text-align: center;
@@ -28,7 +28,7 @@ html, body {
   color: #FFD166;
 }
 
-#loose {
+#lose {
   color: #EF476F;
 }
 

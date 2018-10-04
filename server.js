@@ -20,6 +20,6 @@ require('./backSockets.js')(io, game)
 
 
 
-server.listen(8080, function(res) {
+server.listen(3030, function(res) {
   console.log('listening on port');
 });

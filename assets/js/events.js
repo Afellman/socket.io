@@ -12,8 +12,8 @@ $('#rooms > button').on('click touchstart', function () {
   $('#back').show();
 })
 
-
 $('#back').on('click', function() {
+  $("#roomsInput input").val("")
   $('#rooms').show()
   $('#roomsInput').hide();
   $('#roomName').hide()
@@ -24,23 +24,11 @@ $('#back').on('click', function() {
 $('#roomsInput > button').on('click touchstart', function () {
   var value = $(`#roomName`).val();
   var userName = $('#playerName').val();
-  game[game.hostClient].name = userName;
-  
   if (game.hostClient == 'host') {
-    // client or host? 
-    // setting the user name
-    socket.emit('hostRoom', {
-      name: value,
-      userName: userName
-    })
+    sockets.hostRoom(value, userName)
   } else if (game.hostClient == 'client') {
-    socket.emit('joinRoom', {
-      name: value,
-      userName: userName
-    })
-  } else {
-    console.log('huh?')
-  }
+    sockets.joinRoom(value, userName)
+  } 
 })
 
 
@@ -64,14 +52,14 @@ $('#roomsInput > button').on('click touchstart', function () {
 function canvasListeners() {
   $('canvas').on('mousedown touchstart', function () {
     // If the mouse click was within the circle, make the circle moveable
-    if(dist(mouseX, mouseY, game.ball.x, game.ball.y) <= game.ball.radius){
-      game.ball.moveable = true
+    if(dist(mouseX, mouseY, ball.x, ball.y) <= ball.radius){
+      ball.moveable = true
     }
   
   })
   
   $('canvas').on('mouseup touchend', function () {
-    game.ball.moveable = false;
+    ball.moveable = false;
     return false;
   })
 

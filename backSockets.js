@@ -30,8 +30,8 @@ module.exports = function (io, game) {
     })
 
 
-    socket.on('winGame', function (data) {
-      io.to(data.room).emit('winGame', data.player);
+    socket.on('gameOver', function (data) {
+      io.to(data.room).emit('gameOver', data.player);
       console.log(game.rooms, 'before')
       utils.deleteRoom(game.rooms, data.room);
       console.log(game.rooms, 'after')
@@ -39,7 +39,7 @@ module.exports = function (io, game) {
 
 
     socket.on('winRound', function(data) {
-      io.to(data.room).emit('winRound', data.player)
+      io.to(data.room).emit('winRound', {player: data.player, userName: data.userName})
     })
 
     socket.on('hostRoom', function (data) {
@@ -73,13 +73,23 @@ module.exports = function (io, game) {
         socket.join(roomName);
         console.log('"' + data.userName + '" join "' + roomName + '"')
         // emit to the room (player and host) that the user joined successfully
-        io.to(roomName).emit('joinGame', {joined : true, room: game.rooms[joinGame.index] });
+        io.to(roomName).emit('joinRoom', {joined : true, room: game.rooms[joinGame.index] });
       } else {
         // If the game does not exist, emit to the user that the join was 
         // unsuccessfully
-        socket.emit('joinGame', {joined : false}); 
+        socket.emit('joinRoom', {joined : false}); 
       }
       
+    })
+
+    socket.on('startGame', function(data){
+      var roomIndex = utils.findRoomIndex(game.rooms, data);
+      var roomData = {
+        name: data,
+        host: game.rooms[roomIndex].host,
+        client: game.rooms[roomIndex].client
+      }
+      io.to(data).emit('startGame', roomData);
     })
 
   });

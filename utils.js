@@ -10,9 +10,7 @@ function roomCheck(roomArray, newRoom) {
 
 
 function joinGame(roomArray, roomName, userName) {
-  var roomIndex = roomArray.findIndex(function(el) {
-    return el.roomName == roomName
-  })
+  var roomIndex = findRoomIndex(roomArray, roomName);
   if(roomIndex !== -1 && !roomArray[roomIndex].full){
     roomArray[roomIndex].client = userName;
     roomArray[roomIndex].full = true;
@@ -24,16 +22,18 @@ function joinGame(roomArray, roomName, userName) {
 
 
 function deleteRoom(roomArray, roomName) {
-  var roomIndex = roomArray.findIndex(function(el) {
-    return el.roomName == roomName
-  })
+  var roomIndex = findRoomIndex(roomArray, roomName);
   roomArray.splice(roomIndex, 1);
 }
 
+function findRoomIndex(roomArray, roomName){
+  return roomArray.findIndex(function(el){return el.roomName == roomName})
+}
 
 
 module.exports = {
   roomCheck: roomCheck,
   joinGame : joinGame,
-  deleteRoom: deleteRoom
+  deleteRoom: deleteRoom,
+  findRoomIndex: findRoomIndex
 }

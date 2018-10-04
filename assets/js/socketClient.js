@@ -1,65 +1,51 @@
-socket.on('players', function(players) {
-  if(!players.player1) {
-    $('#player1').show();
+var sockets = {
+  // Socket emitters
+  score : function(){
+    socket.emit('score', {
+      score: 1, 
+      room: game.room, 
+      player: game.hostClient
+    });
+  },
+
+  gameOver : function(){
+    socket.emit('gameOver', {
+      room: game.room, 
+      player: game.hostClient
+    }) 
+    
+  },
+
+  winRound: function(){
+    socket.emit('winRound', {
+      room: game.room, 
+      player: game.hostClient, 
+      userName: game[game.hostClient].name
+    })
+    
+  },
+
+  hostRoom : function(value, userName){
+    socket.emit('hostRoom', {
+      name: value,
+      userName: userName
+    })
+  },
+
+  joinRoom: function(value, userName){
+    socket.emit('joinRoom', {
+      name: value,
+      userName: userName
+    })
   }
-  if (!players.player2){
-    $('#player2').show();
-  }
-})
+}
 
 
-socket.on('score',function(user){
-  if(user !== game.hostClient) {
-    game.score(user, game.round)
-  }
-})
+// Socket listeners
+socket.on('gameOver', game.gameOver)
+socket.on('winRound', game.winRound);
+socket.on('hostRoom', hostRoom)
+socket.on('joinRoom', joinRoom)
+socket.on('score', score)
 
-// after a user chooses a player, hide that player button.
-
-socket.on('gameStart', function(){
-  game.start()
-})
-
-
-socket.on('winGame', function(data){
-  noCanvas();
-  if(data.player !== game.hostClient) {
-    $('#loose').show();
-  }
-})
-
-socket.on('winRound', function(player) {
-  // resetting the meter back to 0
-  game.changeRound()
-  game.increaseScore(player)
-  // show graphic that round was won?
-
-})
-
-socket.on('hostRoom', function(data){
-  console.log('hostGame', data);
-  if (data.newRoom == true) {
-    console.log(data.name, "data.name")
-    $('#back').hide();
-    game.room = data.room
-    game.waiting();
-  } else if (data.newRoom == false) {
-    game.showWarn('host');
-  }
-});
-
-
-socket.on('joinGame', function(data) {
-  console.log('joinGame', data)
-  if (data.joined){
-    console.log(data.room, "data.name")
-    $('#back').hide();
-    $('#hostScore').text(data.room.host + " : 0");
-    $('#clientScore').text(data.room.client + " : 0");
-      game.room = data.room.roomName;
-      game.start();
-  } else {
-      game.showWarn('client');
-  }
- 
-})
+// Universal calls
