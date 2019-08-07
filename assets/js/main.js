@@ -4,7 +4,7 @@ var socket = io();
 //=================== Config =====================
 
 var pointsToWin = 2;
-var _size = 5
+var _size = 5;
 var hG = $(window).height();
 var wG = $(window).width();
 // 1 - 10 (hard - easy)
@@ -25,11 +25,7 @@ var game = {
   winner : '',
   playerColor : '',
   active : false,
-  roundMultiplier : {
-    1: 1,
-    2: 10,
-    3 : 1
-  },
+  roundMultiplier : [1, 10, 1],
   room: '',
   round : 1,
   hostScore: 0,
@@ -95,7 +91,7 @@ var game = {
       game.meter2.w = 0;
       changeRound()
       increaseScore(data.player, data.userName)
-    if(game.round == 3) {
+    if(game.round == 10) {
       sockets.gameOver()
     }
   },
@@ -148,7 +144,6 @@ var obstacles = [
   },
   // two lines obstacle that moves "randomly" each frame. 
   {
-    // CONVERT TO VERTICAL
     line1_x1: 0,
     line1_y : hG / 2,
     line1_x2: wG, 
@@ -192,8 +187,33 @@ var obstacles = [
     } 
   },
   {
+    x: wG / 2, 
+    y: 100,
+    size: wG / _size + 10,
+    radius : _size / 2,
+    color: '#FFD166',
+    stroke: 5,
+    grow : false,
+    move : function() {
+      this.x = Math.random() * (wG - this.radius) + this.radius;
+      this.y = Math.random() * (hG - this.radius) + this.radius;
+    },
+    growShrink : function(){
+      if(this.grow) {
+        this.size += 2;
+      } else {
+        this.size -= 2;
+      }
+      if(this.size < 2){
+        this.grow = true;
+        obstacles[2].move();
+      }
+      if(this.size > wG / _size + 20){
+        this.grow = false;
+      }
+    }
+  },
     
-  }
 ]
 
 function joinRoom(data){
@@ -219,12 +239,13 @@ function hostRoom (data){
 
 function score(user) {
   // move the hole
-  game.round == 1 ? obstacles[0].move() : null;
   // grow score meters based on the round muliplier
   if(user == game.hostClient){
-    game.meter1.w += width / (pointsToWin * game.roundMultiplier[game.round]);
+    game.round == 1 ? obstacles[0].move() : null;
+    game.round == 3 ? obstacles[2].move() : null;
+    game.meter1.w += width / (pointsToWin * game.roundMultiplier[game.round - 1]);
   } else {
-    game.meter2.w += width / (pointsToWin * game.roundMultiplier[game.round]);
+    game.meter2.w += width / (pointsToWin * game.roundMultiplier[game.round - 1]);
   }
 }
   
@@ -237,8 +258,9 @@ function changeRound() {
 
 
 function increaseScore(player, userName) {
+  game[player].score ++;
   var score = game[player].score
-  var scoreString = `${userName} : ${score+ 1}`;
+  var scoreString = `${userName} : ${score}`;
   if(player === game.hostClient){
     $(`#${player}Score`).text(scoreString)
   }
@@ -268,6 +290,18 @@ function checkScore(){
       sockets.score()
     } else {
 
+    }
+  } else if (game.round == 3){
+    var ballX = ball.x;
+    var ballY = ball.y;
+    var holeX = obstacles[2].x;
+    var holeY = obstacles[2].y;
+    // if the ball is in the hole.
+    if (((ballX >= holeX && ballX <= holeX + (handicap + 5)) || 
+        (ballX <= holeX && ball.x >= holeX - (handicap + 5))) && 
+        ((ballY >= holeY && ballY <= holeY + (handicap + 5)) || 
+        (ballY <= holeY && ballY >= holeY - (handicap + 5))) && obstacles[2].size > wG / _size + 10){
+        sockets.score()
     }
   }
 }

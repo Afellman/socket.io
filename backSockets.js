@@ -4,7 +4,7 @@ var utils = require('./utils.js');
 module.exports = function (io, game) {
 
   io.on('connection', function (socket) {
-    console.log('connected')
+    console.log(socket)
 
     io.emit('players', game)
 
@@ -94,10 +94,3 @@ module.exports = function (io, game) {
 
   });
 }
-
-
-
-
-
-
-

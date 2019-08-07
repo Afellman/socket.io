@@ -42,13 +42,15 @@ function draw() {
         obstacles[1].move()
         break;
       case 3 :
+        obstacles[2].growShrink();
+        noFill() 
+        strokeWeight(obstacles[2].stroke)
+        stroke(obstacles[2].color)
+        ellipse(obstacles[2].x, obstacles[2].y, obstacles[2].size, obstacles[2].size)
         break;
       case 4 :
         break;
     }
-    if(game.round == "1"){
-      
-    } 
     
     // meter1
     noStroke()
